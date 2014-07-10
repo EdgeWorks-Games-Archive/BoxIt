@@ -5,7 +5,6 @@ using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.GamerServices;
 
 namespace BoxIt
 {
@@ -17,7 +16,6 @@ namespace BoxIt
 		private GraphicsDeviceManager _graphics;
 		private SpriteBatch _spriteBatch;
 		private TileTerrain _terrain;
-		private Camera _camera;
 
 		public BoxIt()
 		{
@@ -58,14 +56,11 @@ namespace BoxIt
 		/// <summary>
 		///     Allows the game to perform any initialization it needs to before starting to run.
 		///     This is where it can query for any required services and load any non-graphic
-		///     related content. Calling base.Initialize will enumerate through any components
+		///     related content.  Calling base.Initialize will enumerate through any components
 		///     and initialize them as well.
 		/// </summary>
 		protected override void Initialize()
 		{
-			_camera = new Camera();
-			_camera.Resolution = new Point(_graphics.PreferredBackBufferWidth, _graphics.PreferredBackBufferHeight);
-
 			_terrain = new TileTerrain(this);
 			Components.Add(_terrain);
 
@@ -102,7 +97,9 @@ namespace BoxIt
 			if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
 			    Keyboard.GetState().IsKeyDown(Keys.Escape))
 				Exit();
-			
+
+			// Add update logic here
+
 			base.Update(gameTime);
 		}
 
@@ -113,7 +110,7 @@ namespace BoxIt
 		protected override void Draw(GameTime gameTime)
 		{
 			GraphicsDevice.Clear(Color.Black);
-			
+
 			_spriteBatch.Begin(
 				SpriteSortMode.Deferred, BlendState.AlphaBlend,
 				SamplerState.PointClamp, DepthStencilState.None,
