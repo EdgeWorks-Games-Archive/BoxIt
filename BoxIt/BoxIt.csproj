@@ -42,6 +42,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="BoxIt.cs" />
+    <Compile Include="StandardDrawer.cs" />
+    <Compile Include="IDrawer.cs" />
     <Compile Include="IsoCamera.cs" />
     <Compile Include="TileType.cs" />
     <Compile Include="Tile.cs" />

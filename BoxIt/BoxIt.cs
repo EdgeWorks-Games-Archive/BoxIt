@@ -13,9 +13,10 @@ namespace BoxIt
 	public sealed class BoxIt : Game
 	{
 		private readonly GraphicsDeviceManager _graphics;
+		private IsoCamera _camera;
+		private IDrawer _drawer;
 		private SpriteBatch _spriteBatch;
 		private TileTerrain _terrain;
-		private IsoCamera _camera;
 
 		public BoxIt()
 		{
@@ -45,7 +46,7 @@ namespace BoxIt
 			// Configure default settings
 			IsMouseVisible = true;
 			Content.RootDirectory = "Content";
-			
+
 			_graphics = new GraphicsDeviceManager(this)
 			{
 				PreferredBackBufferWidth = 1280,
@@ -83,8 +84,9 @@ namespace BoxIt
 		/// </summary>
 		protected override void LoadContent()
 		{
-			// Create a new SpriteBatch, which can be used to draw textures.
+			// Create a new graphics related objects
 			_spriteBatch = new SpriteBatch(GraphicsDevice);
+			_drawer = new StandardDrawer();
 
 			_terrain.Tileset = Content.Load<Texture2D>("Graphics/Tileset");
 		}
@@ -118,13 +120,13 @@ namespace BoxIt
 		protected override void Draw(GameTime gameTime)
 		{
 			GraphicsDevice.Clear(Color.Black);
-			
+
 			_spriteBatch.Begin(
 				SpriteSortMode.Deferred, BlendState.AlphaBlend,
 				SamplerState.PointClamp, DepthStencilState.None,
 				RasterizerState.CullCounterClockwise);
 
-			_terrain.Draw(_camera, _spriteBatch);
+			_drawer.DrawTerrain(_terrain, _camera, _spriteBatch);
 
 			_spriteBatch.End();
 
