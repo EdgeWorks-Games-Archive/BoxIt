@@ -17,7 +17,7 @@ namespace BoxIt
 
 		public Texture2D Tileset { get; set; }
 
-		public void Draw(SpriteBatch spriteBatch)
+		public void Draw(IsoCamera camera, SpriteBatch spriteBatch)
 		{
 			// Start at the highest X since that's the one on top
 			for (var x = _tiles.Length-1; x >= 0; x--)
@@ -26,18 +26,13 @@ namespace BoxIt
 				{
 					spriteBatch.Draw(
 						Tileset,
-						new Vector2((x * 32) + (y * 32), -(x * 16) + (y * 16)),
+						camera.ToAbsolute(new Vector2(x, y)),
 						new Rectangle(0, 0, 32, 32),
 						Color.White,
-						0f, new Vector2(0, 16 + 8), 2f,
+						0f, new Vector2(0, 16 + 8), camera.Zoom,
 						SpriteEffects.None, 0f);
 				}
 			}
-		}
-
-		public void Render()
-		{
-			
 		}
 	}
 }

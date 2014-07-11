@@ -42,7 +42,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="BoxIt.cs" />
-    <Compile Include="Camera.cs" />
+    <Compile Include="IsoCamera.cs" />
     <Compile Include="TileType.cs" />
     <Compile Include="Tile.cs" />
     <Compile Include="TileTerrain.cs" />

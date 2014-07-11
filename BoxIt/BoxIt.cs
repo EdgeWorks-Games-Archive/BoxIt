@@ -15,7 +15,7 @@ namespace BoxIt
 		private readonly GraphicsDeviceManager _graphics;
 		private SpriteBatch _spriteBatch;
 		private TileTerrain _terrain;
-		private Camera _camera;
+		private IsoCamera _camera;
 
 		public BoxIt()
 		{
@@ -61,12 +61,14 @@ namespace BoxIt
 		/// </summary>
 		protected override void Initialize()
 		{
-			_camera = new Camera
+			_camera = new IsoCamera
 			{
+				Position = new Vector2(-160, -320),
 				Resolution = new Point(
 					_graphics.PreferredBackBufferWidth,
 					_graphics.PreferredBackBufferHeight),
-				Zoom = 2
+				Zoom = 2,
+				TileSize = new Point(32, 16)
 			};
 
 			_terrain = new TileTerrain(this);
@@ -105,7 +107,7 @@ namespace BoxIt
 			if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
 			    Keyboard.GetState().IsKeyDown(Keys.Escape))
 				Exit();
-			
+
 			base.Update(gameTime);
 		}
 
@@ -122,7 +124,7 @@ namespace BoxIt
 				SamplerState.PointClamp, DepthStencilState.None,
 				RasterizerState.CullCounterClockwise);
 
-			_terrain.Draw(_spriteBatch);
+			_terrain.Draw(_camera, _spriteBatch);
 
 			_spriteBatch.End();
 
