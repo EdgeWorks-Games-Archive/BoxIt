@@ -1,15 +1,11 @@
 ﻿using System;
 using System.Diagnostics;
-using System.IO;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
 namespace BoxIt
 {
-	/// <summary>
-	///     This is the main type for your game
-	/// </summary>
 	public sealed class BoxIt : Game
 	{
 		private readonly GraphicsDeviceManager _graphics;
@@ -18,23 +14,10 @@ namespace BoxIt
 		private SpriteBatch _spriteBatch;
 		private TileTerrain _terrain;
 
-		public BoxIt()
+		public BoxIt(IBoxItPlatform platform)
 		{
 			Trace.AutoFlush = true;
-
-			// Find the user's application data directory
-			var roaming = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData));
-			Debug.Assert(roaming.Exists);
-
-			// Find our specific application data directory
-			var appData = new DirectoryInfo(roaming + "/BoxIt");
-
-			// If it doesn't exist, create it
-			if (!appData.Exists)
-			{
-				appData = roaming.CreateSubdirectory("BoxIt");
-				Debug.Assert(appData.Exists);
-			}
+			var appData = platform.FindAppDataDirectory();
 
 			// Add a log target file and log execution start
 			Trace.Listeners.Add(new TextWriterTraceListener(appData + "/BoxIt.log", "logWriterListener"));
@@ -42,16 +25,12 @@ namespace BoxIt
 			Trace.TraceInformation(" === Execution Start = {0} ===", DateTime.Now.ToString("O"));
 			Trace.TraceInformation("BoxIt application data location: " + appData.FullName);
 
-
 			// Configure default settings
 			IsMouseVisible = true;
 			Content.RootDirectory = "Content";
 
-			_graphics = new GraphicsDeviceManager(this)
-			{
-				PreferredBackBufferWidth = 1280,
-				PreferredBackBufferHeight = 720
-			};
+			_graphics = new GraphicsDeviceManager(this);
+			platform.ConfigureGraphicsDevice(_graphics);
 		}
 
 		/// <summary>
@@ -109,7 +88,7 @@ namespace BoxIt
 			if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
 			    Keyboard.GetState().IsKeyDown(Keys.Escape))
 				Exit();
-
+			
 			base.Update(gameTime);
 		}
 

@@ -10,7 +10,7 @@ namespace BoxIt.Windows
 		[STAThread]
 		private static void Main()
 		{
-			using (var game = new BoxIt())
+			using (var game = new BoxIt(new BoxItWindowsPlatform()))
 				game.Run();
 		}
 	}
