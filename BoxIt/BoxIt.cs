@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.GamerServices;
 
 namespace BoxIt
 {
@@ -14,7 +12,7 @@ namespace BoxIt
 	/// </summary>
 	public sealed class BoxIt : Game
 	{
-		private GraphicsDeviceManager _graphics;
+		private readonly GraphicsDeviceManager _graphics;
 		private SpriteBatch _spriteBatch;
 		private TileTerrain _terrain;
 		private Camera _camera;
@@ -63,8 +61,13 @@ namespace BoxIt
 		/// </summary>
 		protected override void Initialize()
 		{
-			_camera = new Camera();
-			_camera.Resolution = new Point(_graphics.PreferredBackBufferWidth, _graphics.PreferredBackBufferHeight);
+			_camera = new Camera
+			{
+				Resolution = new Point(
+					_graphics.PreferredBackBufferWidth,
+					_graphics.PreferredBackBufferHeight),
+				Zoom = 2
+			};
 
 			_terrain = new TileTerrain(this);
 			Components.Add(_terrain);
