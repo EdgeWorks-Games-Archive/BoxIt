@@ -4,6 +4,6 @@ namespace BoxIt
 {
 	internal interface IDrawer
 	{
-		void DrawTerrain(TileTerrain terrain, IsoCamera camera, SpriteBatch spriteBatch);
+		void DrawTileMap(TileMap terrain, IsoCamera camera, SpriteBatch spriteBatch);
 	}
 }

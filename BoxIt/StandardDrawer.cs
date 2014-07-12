@@ -9,7 +9,7 @@ namespace BoxIt
 		// different drawer class types to create different effects. For example,
 		// a DesignDrawer would draw tiles in a blueprint style.
 
-		public void DrawTerrain(TileTerrain terrain, IsoCamera camera, SpriteBatch spriteBatch)
+		public void DrawTileMap(TileMap terrain, IsoCamera camera, SpriteBatch spriteBatch)
 		{
 			// Start at the highest X since that's the one on top
 			for (var x = terrain.Tiles.Length - 1; x >= 0; x--)

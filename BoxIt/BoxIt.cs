@@ -1,8 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Xml;
+using System.Xml.Serialization;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using OpenTK.Graphics.OpenGL;
 
 namespace BoxIt
 {
@@ -12,7 +16,7 @@ namespace BoxIt
 		private IsoCamera _camera;
 		private IDrawer _drawer;
 		private SpriteBatch _spriteBatch;
-		private TileTerrain _terrain;
+		private TileMap _tileMap;
 
 		public BoxIt(IBoxItPlatform platform)
 		{
@@ -51,8 +55,13 @@ namespace BoxIt
 				TileSize = new Point(32, 16)
 			};
 
-			_terrain = new TileTerrain(this);
-			Components.Add(_terrain);
+			var tileTypes = new List<TileType>()
+			{
+				new TileType()
+			};
+
+			_tileMap = new TileMap(this, Content.Load<TileMapRaw>("Maps/DefaultMap"), tileTypes);
+			Components.Add(_tileMap);
 
 			base.Initialize();
 		}
@@ -67,7 +76,7 @@ namespace BoxIt
 			_spriteBatch = new SpriteBatch(GraphicsDevice);
 			_drawer = new StandardDrawer();
 
-			_terrain.Tileset = Content.Load<Texture2D>("Graphics/Tileset");
+			_tileMap.Tileset = Content.Load<Texture2D>("Graphics/Tileset");
 		}
 
 		/// <summary>
@@ -105,7 +114,7 @@ namespace BoxIt
 				SamplerState.PointClamp, DepthStencilState.None,
 				RasterizerState.CullCounterClockwise);
 
-			_drawer.DrawTerrain(_terrain, _camera, _spriteBatch);
+			_drawer.DrawTileMap(_tileMap, _camera, _spriteBatch);
 
 			_spriteBatch.End();
 

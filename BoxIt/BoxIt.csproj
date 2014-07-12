@@ -43,12 +43,13 @@
   <ItemGroup>
     <Compile Include="BoxIt.cs" />
     <Compile Include="IBoxItPlatform.cs" />
+    <Compile Include="TileMapRaw.cs" />
     <Compile Include="StandardDrawer.cs" />
     <Compile Include="IDrawer.cs" />
     <Compile Include="IsoCamera.cs" />
     <Compile Include="TileType.cs" />
     <Compile Include="Tile.cs" />
-    <Compile Include="TileTerrain.cs" />
+    <Compile Include="TileMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

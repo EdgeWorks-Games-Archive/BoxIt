@@ -3,12 +3,13 @@
 
 /outputDir:bin
 /intermediateDir:obj
-/platform:WindowsPhone
+/platform:Windows
 /config:
 /profile:Reach
 
 #-------------------------------- References --------------------------------#
 
+/reference:../BoxIt/bin/Debug/BoxIt.dll
 
 #---------------------------------- Content ---------------------------------#
 
@@ -22,4 +23,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:TextureFormat=Color
 /build:Graphics/Tileset.png
+
+#begin Maps/DefaultMap.xml
+/importer:XmlImporter
+/processor:PassThroughProcessor
+/build:Maps/DefaultMap.xml
 
