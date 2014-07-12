@@ -32,6 +32,28 @@ namespace BoxIt
 							SpriteEffects.None, 0f);
 					}
 
+					// We need to draw wall tops part of bordering tiles first
+					// This is done in this tile instead of the tile it's a top of because otherwise
+					// objects moving into the tile would overlap the top when not part of the tile yet.
+					// TODO: Separate tops for separate directions
+					if (x < (terrain.Tiles.Length - 1))
+					{
+						var borderTile = terrain.Tiles[x + 1][y];
+						if (borderTile.Wall != null &&
+							borderTile.Wall.HasTop)
+						{
+							spriteBatch.Draw(
+								terrain.Tileset,
+								camera.ToAbsolute(new Vector2(x+1, y)),
+								new Rectangle(
+									borderTile.Wall.TopTextureLocation.X, borderTile.Wall.TopTextureLocation.Y,
+									32, 96),
+								Color.White,
+								0f, new Vector2(0, 64 + 24 + borderTile.Wall.HeightOffset), camera.Zoom,
+								SpriteEffects.None, 0f);
+						}
+					}
+
 					if (tile.Wall != null)
 					{
 						spriteBatch.Draw(
@@ -44,6 +66,8 @@ namespace BoxIt
 							0f, new Vector2(0, 64 + 24 + tile.Wall.HeightOffset), camera.Zoom,
 							SpriteEffects.None, 0f);
 					}
+
+					// Draw objects part of the tile here
 				}
 			}
 		}

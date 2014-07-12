@@ -5,5 +5,37 @@
 			<Name>Blue/Beige Wall NW</Name>
 			<TextureLocation>0 64</TextureLocation>
 		</Item>
+		<Item>
+			<Name>Blue/Beige Wall NE</Name>
+			<TextureLocation>32 64</TextureLocation>
+		</Item>
+		<Item>
+			<Name>Blue/Beige Wall Corner N</Name>
+			<TextureLocation>64 64</TextureLocation>
+		</Item>
+		<Item>
+			<Name>Blue/Beige Wall Corner W (High)</Name>
+			<TextureLocation>0 64</TextureLocation>
+			<HasTop>1</HasTop>
+			<TopTextureLocation>0 160</TopTextureLocation>
+		</Item>
+		<Item>
+			<Name>Blue/Beige Wall Corner W (Low)</Name>
+			<TextureLocation>0 64</TextureLocation>
+			<HasTop>1</HasTop>
+			<TopTextureLocation>32 160</TopTextureLocation>
+		</Item>
+		<Item>
+			<Name>Blue/Beige Wall SW (High)</Name>
+			<TextureLocation>0 256</TextureLocation>
+			<HasTop>1</HasTop>
+			<TopTextureLocation>64 160</TopTextureLocation>
+		</Item>
+		<Item>
+			<Name>Blue/Beige Wall SW (Low)</Name>
+			<TextureLocation>0 256</TextureLocation>
+			<HasTop>1</HasTop>
+			<TopTextureLocation>96 160</TopTextureLocation>
+		</Item>
 	</Asset>
 </XnaContent>

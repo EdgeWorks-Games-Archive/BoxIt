@@ -4,6 +4,7 @@ using BoxIt.Content;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Storage;
 
 namespace BoxIt
 {
@@ -18,19 +19,23 @@ namespace BoxIt
 		public BoxIt(IBoxItPlatform platform)
 		{
 			Trace.AutoFlush = true;
-			var appData = platform.FindAppDataDirectory();
+			
+			// Open a storage container
+			var device = StorageDevice.EndShowSelector(StorageDevice.BeginShowSelector(null, this));
+			var container = device.EndOpenContainer(device.BeginOpenContainer("BoxIt_MetaData", null, this));
 
 			// Add a log target file and log execution start
-			Trace.Listeners.Add(new TextWriterTraceListener(appData + "/BoxIt.log", "logWriterListener"));
+			var now = DateTime.Now.ToString("O");
+			Trace.Listeners.Add(new TextWriterTraceListener(container.CreateFile(now.Replace(':', '-') + ".log"), "logWriterListener"));
 			Trace.WriteLine("");
-			Trace.TraceInformation(" === Execution Start = {0} ===", DateTime.Now.ToString("O"));
-			Trace.TraceInformation("BoxIt application data location: " + appData.FullName);
+			Trace.TraceInformation(" === Execution Start = {0} ===", now);
+			Trace.TraceInformation("BoxIt application data location: " + container.DisplayName);
 
 			// Configure default settings
 			IsMouseVisible = true;
 			Content.RootDirectory = "Content";
 
-			_graphics = new GraphicsDeviceManager(this);
+			_graphics = new GraphicsDeviceManager(this) {PreferMultiSampling = false};
 			platform.ConfigureGraphicsDevice(_graphics);
 		}
 

@@ -26,5 +26,10 @@
 			<TextureLocation>128 0</TextureLocation>
 			<HeightOffset>-3</HeightOffset>
 		</Item>
+		<Item>
+			<Name>Interior Tile (Grey)</Name>
+			<TextureLocation>160 0</TextureLocation>
+			<HeightOffset>0</HeightOffset>
+		</Item>
 	</Asset>
 </XnaContent>
