@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Xml;
-using System.Xml.Serialization;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using OpenTK.Graphics.OpenGL;
 
 namespace BoxIt
 {
@@ -55,13 +52,36 @@ namespace BoxIt
 				TileSize = new Point(32, 16)
 			};
 
-			var tileTypes = new List<TileType>()
+			var tileTypes = new List<TileType>
 			{
-				new TileType()
+				new TileType // Pavement
+				{
+					TextureLocation = new Point(0, 0),
+					HeightOffset = -3
+				},
+				new TileType // Road to Pavement Transition
+				{
+					TextureLocation = new Point(32, 0),
+					HeightOffset = -3
+				},
+				new TileType // Pavement to Road Transition
+				{
+					TextureLocation = new Point(32 * 2, 0),
+					HeightOffset = -3
+				},
+				new TileType // Road
+				{
+					TextureLocation = new Point(32 * 3, 0),
+					HeightOffset = -3
+				},
+				new TileType // Road Middle
+				{
+					TextureLocation = new Point(32 * 4, 0),
+					HeightOffset = -3
+				}
 			};
 
-			_tileMap = new TileMap(this, Content.Load<TileMapRaw>("Maps/DefaultMap"), tileTypes);
-			Components.Add(_tileMap);
+			_tileMap = Content.LoadMap("Maps/DefaultMap", tileTypes);
 
 			base.Initialize();
 		}
@@ -97,7 +117,7 @@ namespace BoxIt
 			if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
 			    Keyboard.GetState().IsKeyDown(Keys.Escape))
 				Exit();
-			
+
 			base.Update(gameTime);
 		}
 

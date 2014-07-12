@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace BoxIt
 {
-	internal sealed class TileMap : GameComponent
+	internal sealed class TileMap
 	{
-		public TileMap(Game game, TileMapRaw tileMap, IList<TileType> tileTypes)
-			: base(game)
+		public TileMap(TileMapRaw tileMap, IList<TileType> tileTypes)
 		{
 			// Transform our input data a bit
 			var rawTiles = tileMap.Tiles.Split(new[] {' ', '\n', '\t'}, StringSplitOptions.RemoveEmptyEntries);

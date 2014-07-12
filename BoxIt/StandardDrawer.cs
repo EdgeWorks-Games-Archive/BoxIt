@@ -16,12 +16,16 @@ namespace BoxIt
 			{
 				for (var y = 0; y < terrain.Tiles[x].Length; y++)
 				{
+					var tile = terrain.Tiles[x][y];
+
 					spriteBatch.Draw(
 						terrain.Tileset,
 						camera.ToAbsolute(new Vector2(x, y)),
-						new Rectangle(0, 0, 32, 32),
+						new Rectangle(
+							tile.Type.TextureLocation.X, tile.Type.TextureLocation.Y,
+							32, 32),
 						Color.White,
-						0f, new Vector2(0, 16 + 8), camera.Zoom,
+						0f, new Vector2(0, 16 + 8 + tile.Type.HeightOffset), camera.Zoom,
 						SpriteEffects.None, 0f);
 				}
 			}
