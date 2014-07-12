@@ -42,16 +42,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="BoxIt.cs" />
-    <Compile Include="ContentExtensions.cs" />
+    <Compile Include="Content\ContentExtensions.cs" />
     <Compile Include="IBoxItPlatform.cs" />
-    <Compile Include="TileMapRaw.cs" />
+    <Compile Include="Content\TileMapRaw.cs" />
     <Compile Include="StandardDrawer.cs" />
     <Compile Include="IDrawer.cs" />
     <Compile Include="IsoCamera.cs" />
-    <Compile Include="TileTypeRaw.cs" />
-    <Compile Include="TileType.cs" />
-    <Compile Include="Tile.cs" />
-    <Compile Include="TileMap.cs" />
+    <Compile Include="Content\TileTypeRaw.cs" />
+    <Compile Include="Content\TileType.cs" />
+    <Compile Include="Content\Tile.cs" />
+    <Compile Include="Content\TileMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

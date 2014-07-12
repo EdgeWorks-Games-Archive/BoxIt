@@ -1,4 +1,4 @@
-﻿namespace BoxIt
+﻿namespace BoxIt.Content
 {
 	public sealed class TileMapRaw
 	{

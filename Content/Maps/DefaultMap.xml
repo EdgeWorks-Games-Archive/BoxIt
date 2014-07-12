@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <XnaContent xmlns:ns="Microsoft.Xna.Framework">
-	<Asset Type="BoxIt.TileMapRaw">
+	<Asset Type="BoxIt.Content.TileMapRaw">
 		<Width>25</Width>
 		<Tiles>
 			0 2 3 3 3 3 3 3 3 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0

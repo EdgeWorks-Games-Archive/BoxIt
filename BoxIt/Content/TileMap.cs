@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace BoxIt
+namespace BoxIt.Content
 {
 	internal sealed class TileMap
 	{

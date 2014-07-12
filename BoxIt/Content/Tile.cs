@@ -1,4 +1,4 @@
-﻿namespace BoxIt
+﻿namespace BoxIt.Content
 {
 	internal struct Tile
 	{

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <XnaContent xmlns:ns="Microsoft.Xna.Framework">
-	<Asset Type="BoxIt.TileTypeRaw[]">
+	<Asset Type="BoxIt.Content.TileTypeRaw[]">
 		<Item>
 			<Name>Pavement</Name>
 			<TextureLocation>0 0</TextureLocation>

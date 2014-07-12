@@ -2,7 +2,7 @@
 using System.Linq;
 using Microsoft.Xna.Framework.Content;
 
-namespace BoxIt
+namespace BoxIt.Content
 {
 	internal static class ContentExtensions
 	{

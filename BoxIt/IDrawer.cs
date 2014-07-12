@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using BoxIt.Content;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace BoxIt
 {

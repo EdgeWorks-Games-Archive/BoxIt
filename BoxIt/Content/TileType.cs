@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using Microsoft.Xna.Framework;
 
-namespace BoxIt
+namespace BoxIt.Content
 {
 	internal sealed class TileType
 	{
