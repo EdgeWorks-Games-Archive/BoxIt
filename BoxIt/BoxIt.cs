@@ -52,35 +52,7 @@ namespace BoxIt
 				TileSize = new Point(32, 16)
 			};
 
-			var tileTypes = new List<TileType>
-			{
-				new TileType // Pavement
-				{
-					TextureLocation = new Point(0, 0),
-					HeightOffset = -3
-				},
-				new TileType // Road to Pavement Transition
-				{
-					TextureLocation = new Point(32, 0),
-					HeightOffset = -3
-				},
-				new TileType // Pavement to Road Transition
-				{
-					TextureLocation = new Point(32 * 2, 0),
-					HeightOffset = -3
-				},
-				new TileType // Road
-				{
-					TextureLocation = new Point(32 * 3, 0),
-					HeightOffset = -3
-				},
-				new TileType // Road Middle
-				{
-					TextureLocation = new Point(32 * 4, 0),
-					HeightOffset = -3
-				}
-			};
-
+			var tileTypes = Content.LoadTileTypes("Tiles");
 			_tileMap = Content.LoadMap("Maps/DefaultMap", tileTypes);
 
 			base.Initialize();

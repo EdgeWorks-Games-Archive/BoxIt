@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent xmlns:ns="Microsoft.Xna.Framework">
+	<Asset Type="BoxIt.TileTypeRaw[]">
+		<Item>
+			<Name>Pavement</Name>
+			<TextureLocation>0 0</TextureLocation>
+			<HeightOffset>-3</HeightOffset>
+		</Item>
+		<Item>
+			<Name>Road(Left)->Pavement(Right)</Name>
+			<TextureLocation>32 0</TextureLocation>
+			<HeightOffset>-3</HeightOffset>
+		</Item>
+		<Item>
+			<Name>Pavement(Left)->Road(Right)</Name>
+			<TextureLocation>64 0</TextureLocation>
+			<HeightOffset>-3</HeightOffset>
+		</Item>
+		<Item>
+			<Name>Road</Name>
+			<TextureLocation>96 0</TextureLocation>
+			<HeightOffset>-3</HeightOffset>
+		</Item>
+		<Item>
+			<Name>Road Middle</Name>
+			<TextureLocation>128 0</TextureLocation>
+			<HeightOffset>-3</HeightOffset>
+		</Item>
+	</Asset>
+</XnaContent>

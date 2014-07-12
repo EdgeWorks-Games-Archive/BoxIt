@@ -29,3 +29,8 @@
 /processor:PassThroughProcessor
 /build:Maps/DefaultMap.xml
 
+#begin Tiles.xml
+/importer:XmlImporter
+/processor:PassThroughProcessor
+/build:Tiles.xml
+
