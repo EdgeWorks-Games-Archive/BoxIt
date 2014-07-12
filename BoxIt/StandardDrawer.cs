@@ -19,15 +19,31 @@ namespace BoxIt
 				{
 					var tile = terrain.Tiles[x][y];
 
-					spriteBatch.Draw(
-						terrain.Tileset,
-						camera.ToAbsolute(new Vector2(x, y)),
-						new Rectangle(
-							tile.Type.TextureLocation.X, tile.Type.TextureLocation.Y,
-							32, 32),
-						Color.White,
-						0f, new Vector2(0, 16 + 8 + tile.Type.HeightOffset), camera.Zoom,
-						SpriteEffects.None, 0f);
+					if (tile.Type != null)
+					{
+						spriteBatch.Draw(
+							terrain.Tileset,
+							camera.ToAbsolute(new Vector2(x, y)),
+							new Rectangle(
+								tile.Type.TextureLocation.X, tile.Type.TextureLocation.Y,
+								32, 32),
+							Color.White,
+							0f, new Vector2(0, 24 + tile.Type.HeightOffset), camera.Zoom,
+							SpriteEffects.None, 0f);
+					}
+
+					if (tile.Wall != null)
+					{
+						spriteBatch.Draw(
+							terrain.Tileset,
+							camera.ToAbsolute(new Vector2(x, y)),
+							new Rectangle(
+								tile.Wall.TextureLocation.X, tile.Wall.TextureLocation.Y,
+								32, 96),
+							Color.White,
+							0f, new Vector2(0, 64 + 24 + tile.Wall.HeightOffset), camera.Zoom,
+							SpriteEffects.None, 0f);
+					}
 				}
 			}
 		}

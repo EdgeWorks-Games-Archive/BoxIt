@@ -34,3 +34,8 @@
 /processor:PassThroughProcessor
 /build:Tiles.xml
 
+#begin Walls.xml
+/importer:XmlImporter
+/processor:PassThroughProcessor
+/build:Walls.xml
+

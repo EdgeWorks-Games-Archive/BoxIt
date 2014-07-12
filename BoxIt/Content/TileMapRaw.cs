@@ -4,5 +4,6 @@
 	{
 		public int Width { get; set; }
 		public string Tiles { get; set; }
+		public string Walls { get; set; }
 	}
 }

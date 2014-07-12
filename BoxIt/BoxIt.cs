@@ -53,7 +53,8 @@ namespace BoxIt
 			};
 
 			var tileTypes = Content.LoadTileTypes("Tiles");
-			_tileMap = Content.LoadMap("Maps/DefaultMap", tileTypes);
+			var wallTypes = Content.LoadWallTypes("Walls");
+			_tileMap = Content.LoadMap("Maps/DefaultMap", tileTypes, wallTypes);
 
 			base.Initialize();
 		}

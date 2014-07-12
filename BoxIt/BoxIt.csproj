@@ -43,6 +43,8 @@
   <ItemGroup>
     <Compile Include="BoxIt.cs" />
     <Compile Include="Content\ContentExtensions.cs" />
+    <Compile Include="Content\WallType.cs" />
+    <Compile Include="Content\WallTypeRaw.cs" />
     <Compile Include="IBoxItPlatform.cs" />
     <Compile Include="Content\TileMapRaw.cs" />
     <Compile Include="StandardDrawer.cs" />
